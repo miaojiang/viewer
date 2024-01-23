@@ -6,6 +6,8 @@ import { NavigationButton } from "../NavigationButton";
 import { ArrowUpRight } from "../../icons/ArrowUpRight";
 import { DevActionsDropdown } from "./DevActionsDropdown";
 import { Widget } from "near-social-vm";
+import { SignInButton} from "../SignInButton";
+import { UserDropdown } from "./UserDropdown";
 
 const StyledNavigation = styled.div`
   position: sticky;
@@ -89,6 +91,14 @@ export function DesktopNavigation(props) {
           <Widget
             code={`return <Web3Connect connectLabel="Connect Wallet" disconnectLabel="Disconnect"/>`}
           />
+           {!props.signedIn && (
+            <SignInButton onSignIn={() => props.requestSignIn()} />
+          )}
+          {props.signedIn && (
+            <>
+              <UserDropdown {...props} />
+            </>
+          )}
         </div>
       </div>
     </StyledNavigation>
