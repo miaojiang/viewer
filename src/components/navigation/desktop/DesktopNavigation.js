@@ -96,7 +96,7 @@ export function DesktopNavigation(props) {
           )}
           {props.signedIn && (
             <>
-              <UserDropdown {...props} />
+              <UserDropdown {...props}/>
             </>
           )}
         </div>
