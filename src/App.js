@@ -15,7 +15,6 @@ import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
 import { setupSender } from "@near-wallet-selector/sender";
 import { setupHereWallet } from "@near-wallet-selector/here-wallet";
 import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
-import { setupNeth } from "@near-wallet-selector/neth";
 import { setupNightly } from "@near-wallet-selector/nightly";
 import { setupModal } from "@near-wallet-selector/modal-ui";
 import { setupWalletConnect } from "@near-wallet-selector/wallet-connect";
@@ -67,22 +66,18 @@ function App(props) {
           modules: [
             setupMyNearWallet(),
             setupWalletConnect({
-              projectId: projectId,
+              projectId: "31e2eaaed3fbf6a6af0ecb7b17f59d84",
               metadata: {
                 name: 'NEAR Wallet Selector',
                 description: 'Example dApp used by NEAR Wallet Selector',
-                url: 'https://github.com/near/wallet-selector',
+                url: 'http://127.0.0.1:3000',
                 icons: ['https://avatars.githubusercontent.com/u/37784886'],
             },
-              chainId: chainId,
+              //chainId: chainId,
           }),
             setupSender(),
             setupHereWallet(),
             setupMeteorWallet(),
-            setupNeth({
-              gas: "300000000000000",
-              bundle: false,
-            }),
             setupNightly(),
           ],
         }),
