@@ -91,7 +91,7 @@ export function DesktopNavigation(props) {
           <Widget
             code={`return <Web3Connect connectLabel="Connect Wallet" disconnectLabel="Disconnect"/>`}
           />
-           {!props.signedIn && (
+           {(!props.signedIn && props.useWalletSelector ) && (
             <SignInButton onSignIn={() => props.requestSignIn()} />
           )}
           {props.signedIn && (

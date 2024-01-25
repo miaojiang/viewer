@@ -44,7 +44,7 @@ function App(props) {
   const [availableStorage, setAvailableStorage] = useState(null);
   const [walletModal, setWalletModal] = useState(null);
   const [widgetSrc, setWidgetSrc] = useState(null);
-
+  const [useWalletSelector, setUseWalletSelector] = useState(false);
   const ethersProviderContext = useEthersProviderContext();
 
   const { initNear } = useInitNear();
@@ -53,6 +53,11 @@ function App(props) {
 
   const accountId = account.accountId;
 
+  let queryString = new URLSearchParams(window.location.search);
+  const WS = queryString.get('WS');
+  const projectId = process.env.PROJECT_ID;
+  let chainId = "near:" + NetworkId;
+  
   useEffect(() => {
     initNear &&
       initNear({
@@ -62,14 +67,14 @@ function App(props) {
           modules: [
             setupMyNearWallet(),
             setupWalletConnect({
-              projectId: 'test...',
+              projectId: projectId,
               metadata: {
                 name: 'NEAR Wallet Selector',
                 description: 'Example dApp used by NEAR Wallet Selector',
                 url: 'https://github.com/near/wallet-selector',
                 icons: ['https://avatars.githubusercontent.com/u/37784886'],
             },
-              chainId: `near:${NetworkId}`,
+              chainId: chainId,
           }),
             setupSender(),
             setupHereWallet(),
@@ -79,7 +84,6 @@ function App(props) {
               bundle: false,
             }),
             setupNightly(),
-            
           ],
         }),
         customElements: {
@@ -149,6 +153,7 @@ function App(props) {
     setSignedIn(!!accountId);
     setSignedAccountId(accountId);
     setConnected(true);
+    setUseWalletSelector(WS);
   }, [near, accountId]);
 
   useEffect(() => {
@@ -171,6 +176,7 @@ function App(props) {
     requestSignIn,
     widgets: Widgets,
     documentationHref,
+    useWalletSelector,
   };
 
   return (
