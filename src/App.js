@@ -55,7 +55,6 @@ function App(props) {
   let queryString = new URLSearchParams(window.location.search);
   const WS = queryString.get('WS');
   const projectId = process.env.PROJECT_ID;
-  let chainId = "near:" + NetworkId;
   
   useEffect(() => {
     initNear &&
@@ -66,14 +65,13 @@ function App(props) {
           modules: [
             setupMyNearWallet(),
             setupWalletConnect({
-              projectId: "31e2eaaed3fbf6a6af0ecb7b17f59d84",
+              projectId: projectId,
               metadata: {
-                name: 'NEAR Wallet Selector',
-                description: 'Example dApp used by NEAR Wallet Selector',
+                name: 'bos.gg',
+                description: 'Example gateway for BOS',
                 url: 'http://127.0.0.1:3000',
                 icons: ['https://avatars.githubusercontent.com/u/37784886'],
             },
-              //chainId: chainId,
           }),
             setupSender(),
             setupHereWallet(),
