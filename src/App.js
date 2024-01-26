@@ -54,7 +54,7 @@ function App(props) {
 
   let queryString = new URLSearchParams(window.location.search);
   const WS = queryString.get('WS');
-  const projectId = process.env.PROJECT_ID;
+  const projectId = "31e2eaaed3fbf6a6af0ecb7b17f59d84";
   
   useEffect(() => {
     initNear &&
