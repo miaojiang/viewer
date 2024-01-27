@@ -68,7 +68,7 @@ function App(props) {
               projectId: projectId,
               metadata: {
                 name: 'bos.gg',
-                description: 'Example gateway for BOS',
+                description: 'Example gateway for Blockchain Operating System',
                 url: 'http://127.0.0.1:3000',
                 icons: ['https://avatars.githubusercontent.com/u/37784886'],
             },
