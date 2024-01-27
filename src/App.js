@@ -53,9 +53,9 @@ function App(props) {
   const accountId = account.accountId;
 
   let queryString = new URLSearchParams(window.location.search);
-  const WS = queryString.get('WS');
+  const WS = queryString.has('WS');
   const projectId = "31e2eaaed3fbf6a6af0ecb7b17f59d84";
-  
+
   useEffect(() => {
     initNear &&
       initNear({
@@ -105,7 +105,7 @@ function App(props) {
     }
     near.selector.then((selector) => {
       setWalletModal(
-        setupModal(selector, { contractId: near.config.contractName })
+        setupModal(selector, { contractId : NetworkId === "testnet" ? "v1.social08.testnet" : near.config.contractName })
       );
     });
   }, [near]);

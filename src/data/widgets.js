@@ -2,7 +2,7 @@ const TestnetDomains = {
   "test.near.social": true,
   "127.0.0.1": true,
   "localhost": true,
-  //"viewer-flax.vercel.app": true,
+  "vercel.app": true,
 };
 
 export const ForcedTag = "bos-gg";
